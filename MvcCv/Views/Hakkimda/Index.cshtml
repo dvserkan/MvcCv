@@ -1,0 +1,65 @@
+﻿@using MvcCv.Models.Entity
+@model List<TblHakkinda>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2>Hakkında Listem</h2>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 10px">ID</th>
+                                                <th>Ad</th>
+                                                <th>Soyad</th>
+                                                <th>Adres</th>
+                                                <th>Mail</th>
+                                                <th>Telefon</th>
+                                                <th>Açıklama</th>
+                                                <th>Resim</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var x in Model)
+                                            {
+                                                <tr>
+                                                    <td>@x.ID</td>
+                                                    <td>@x.Ad</td>
+                                                    <td>@x.Soyad</td>
+                                                    <td>@x.Adres</td>
+                                                    <td>@x.Mail</td>
+                                                    <td>@x.Telefon</td>
+                                                    <td>@x.Aciklama</td>
+                                                    <td>@x.Resim</td>
+                                                    <td class="text-center"><a href="/Hakkimda/HakkindaSil/@x.ID" class="btn btn-danger" style="margin-right: 15px">Sil</a></td>
+                                                    <td class="text-center"><a href="/Hakkimda/HakkindaGetir/@x.ID" class="btn btn-warning" style="margin-right: 15px">Güncelle</a></td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <a href="/Hakkimda/HakkindaEkle" class="btn btn-primary">Yeni Hakkında Ekle</a>
+    </div>
+</body>
+</html>

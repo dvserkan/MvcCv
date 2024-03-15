@@ -1,0 +1,41 @@
+﻿@model MvcCv.Models.Entity.TblHakkinda
+@{
+    ViewBag.Title = "HakkindaGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h4>Hakkinda Güncelleme Sayfası</h4>
+<br />
+<form method="post">
+    @Html.Label("Ad")
+    @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Ad, "", new { @style = "color:red" })
+    <br />
+    @Html.Label("Soyad")
+    @Html.TextBoxFor(x => x.Soyad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Soyad, "", new { @style = "color:red" })
+    <br />
+    @Html.Label("Adres")
+    @Html.TextBoxFor(x => x.Adres, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Adres, "", new { @style = "color:red" })
+    <br />
+    @Html.Label("Telefon")
+    @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Telefon, "", new { @style = "color:red" })
+    <br />
+    @Html.Label("Mail")
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Mail, "", new { @style = "color:red" })
+    <br />
+    @Html.Label("Açıklama")
+    @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control", rows = "3" })
+    @Html.ValidationMessageFor(x => x.Aciklama, "", new { @style = "color:red" })
+    <br />
+    @Html.Label("Resim")
+    @Html.TextBoxFor(x => x.Resim, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Resim, "", new { @style = "color:red" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</form>
+

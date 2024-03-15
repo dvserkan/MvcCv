@@ -1,0 +1,53 @@
+﻿@using MvcCv.Models.Entity
+@model List<TblAdmin>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Admin Paneli</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Kullanıcı Adı</th>
+        <th>Düzenle</th>
+    </tr>
+    <tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.KullaniciAdi</td>
+            <td class="text-center">
+                <a href="/Admin/AdminSil/@item.ID" class="btn btn-danger" style="margin-right:15px">Sil</a>
+                @*<button class="btn btn-warning"><a href="~/Admin/AdminGetir/@item.ID"></a> Düzenle</button>*@
+                <a href="/Admin/AdminGetir/@item.ID" class="btn btn-warning">Düzenle</a>
+            </td>
+        </tr>
+    }
+        </tr>
+    </table>
+    <br />
+    <button class="btn btn-primary" data-toggle="modal" data-target="#Modeler">Yeni Kullanıcı Ekle</button>
+    @*PENCERE*@
+    <div class="modal" id="Modeler">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Yeni Admin Oluşturma Paneli</h2>
+                </div>
+                <form method="post" action="~/Admin/AdminEkle">
+                    <div class="modal-body">
+                        <label>Kullanıcı İsmi</label>
+                        <input type="text" name="KullaniciAdi" class="form-control" />
+                        <br />
+                        <label>Şifre</label>
+                        <input type="text" name="Sifre" class="form-control" />
+                        <br />
+                        <button class="btn btn-success" style="margin-left:25%; width:50%">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

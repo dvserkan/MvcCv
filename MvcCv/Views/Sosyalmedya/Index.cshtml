@@ -1,0 +1,95 @@
+﻿@using MvcCv.Models.Entity
+@model List<TblSosyalMedya>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{ string durum = "";}
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2>Sosyal Medya Listem</h2>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 10px">ID</th>
+                                                <th>Durum</th>
+                                                <th>Adı</th>
+                                                <th>Linki</th>
+                                                <th>Icon</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var x in Model)
+                                            {
+                                                if (x.Durum == true)
+                                                {
+                                                    durum = "Aktif";
+                                                }
+                                                else
+                                                {
+                                                    durum = "Pasif";
+                                                }
+
+                                                <tr>
+                                                    <td>@x.ID</td>
+                                                    <td>@durum</td>
+                                                    <td>@x.Ad</td>
+                                                    <td>@x.Link</td>
+                                                    <td>@x.ikon</td>
+                                                    <td class="text-center">
+                                                        <a href="/Sosyalmedya/SosyalmedyaSil/@x.ID" class="btn btn-danger" style="margin-right: 15px">Sil</a>
+                                                        <a href="/Sosyalmedya/SosyalmedyaGetir/@x.ID" class="btn btn-warning" style="margin-right: 15px">Güncelle</a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Yeni Sosyal Medya Ekle</button>
+        @*PENCERE*@
+        <div class="modal" id="Modal1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Yeni Sosyal Medya Ekleme Paneli</h2>
+                    </div>
+                    <form method="post" action="/Sosyalmedya/SosyalmedyaEkle">
+                        <div class="modal-body">
+                            <label>Sosyal Medya İsmi</label>
+                            <input type="text" name="Ad" class="form-control" />
+                            <br />
+                            <label>Link</label>
+                            <input type="text" name="Link" class="form-control" />
+                            <br />
+                            <label>Icon</label>
+                            <input type="text" name="ikon" class="form-control" />
+                            <br />
+                            <button class="btn btn-success" style="margin-left:25%; width:50%">Kaydet</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
